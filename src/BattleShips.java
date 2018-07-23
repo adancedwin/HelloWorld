@@ -140,6 +140,7 @@ public class BattleShips {
         }
 
         public static char timeToPlay4Player(Character[][] grid){
+            char chrValue;
             Scanner input = new Scanner(System.in);
             System.out.println("Player, it's your turn enter the coordinates to hit.");
             System.out.println("Enter X coordinate: ");
@@ -177,10 +178,12 @@ public class BattleShips {
                 System.out.println("Boom! You sunk the ship!");
                 grid[yInt][xInt] = 'g'; //a computer's ship is 'g'one
             }
-            return grid[yInt][xInt];
+            chrValue = grid[yInt][xInt];
+            return chrValue;
         }
 
-        public static char timeToPlay4computer(Character[][] grid){
+        public static Character timeToPlay4computer(Character[][] grid){
+            char chrValue;
             System.out.println();
             System.out.println("It's the computer's turn.");
             Random randInt = new Random();
@@ -207,10 +210,11 @@ public class BattleShips {
             int playerShipCount = 5;
             int compShipCount = 5;
             char hitResult;
-            while((playerShipCount>0)||(compShipCount>0)){
+            while((playerShipCount>0)&&(compShipCount>0)){
                 hitResult = timeToPlay4Player(grid);
                 if(hitResult=='x'){
                     playerShipCount-=1;
+
                 }else if(hitResult=='g'){
                     compShipCount-=1;
                 }
