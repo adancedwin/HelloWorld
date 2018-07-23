@@ -14,10 +14,8 @@ public class BattleShips {
         deplCompShips(charArray); //sets ships' to the 2D array, using indexes generated pseudorandomly
         paintGrid(charArray);
         System.out.println();
-        System.out.println("It's time to play the game!");
         System.out.println();
         timeToPlay(charArray);
-        System.out.println("The game is ended, thank you for playing!");
     }
 
     public static void fillArrayWithZero(Character[][] grid){
@@ -205,10 +203,11 @@ public class BattleShips {
         }
 
         public static void timeToPlay(Character[][] grid){
+            System.out.println("It's time to play the game!");
             int playerShipCount = 5;
             int compShipCount = 5;
             char hitResult;
-            while((playerShipCount!=0)||(compShipCount!=0)){
+            while((playerShipCount>0)||(compShipCount>0)){
                 hitResult = timeToPlay4Player(grid);
                 if(hitResult=='x'){
                     playerShipCount-=1;
@@ -223,5 +222,6 @@ public class BattleShips {
                 }
                 paintGrid(grid);
             }
+            System.out.println("The game is ended, thank you for playing!");
         }
     }
