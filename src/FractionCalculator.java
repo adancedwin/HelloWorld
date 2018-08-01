@@ -2,8 +2,8 @@ import java.util.Scanner;
 
 public class FractionCalculator {
     public static void main(String[] args){
-        getOperation();
-        String fractionStr = validFraction(false);
+        char operType = getOperation();
+        validFraction(false);
         //getFraction();
     }
 
@@ -36,8 +36,9 @@ public class FractionCalculator {
         }
     }
 
-    public static String validFraction(boolean nextTry){
+    public static void validFraction(boolean nextTry){
         Scanner input = new Scanner(System.in);
+        String fractionStr = "";
         if(nextTry){//is it the first attempt to input a fraction of an integer?
             System.out.println("Incorrect input! Please enter a fraction (a/b) or an integer: ");
         }else{
@@ -46,21 +47,32 @@ public class FractionCalculator {
         String fraction = input.next();
         //determine whether the input is a fraction or an integer
         if((fraction.indexOf('/')==-1)){ //true means there is an integer
-            String fractionInt = validFractionHalf(fraction);
+            validFractionHalf(fraction);
+        }else{
+            validFractionFull(fraction); //there is a fraction, presumably
+            }
+    }
+
+
+    public static void validFractionHalf(String half){
+        if(half.length()==0){
+            validFraction(true); //input is incorrect, attempt user to try again
+        }else if(((half.length()>1)&&(half.charAt(0)!='-'))||(!Character.isDigit(half.charAt(0)))||((half.length()>2)&&(half.charAt(0)=='-'))){
+            validFraction(true);
+        }else{
+            int numeratorInt = Integer.parseInt(half);
         }
-        String fractionStr = validFractionFull(fraction); //there is a fraction, presumably
-
     }
 
-    public static String validFractionHalf(String half){
-
-    }
-
-    public static String validFractionFull(String full){
+    public static void validFractionFull(String full){
+        int lengthBasedOnSlash = (full.indexOf('/')+1); //for further check - is there a number after slash
+        if((full.length()==0)||(full.length()<lengthBasedOnSlash)){
+            validFraction(true); //input is incorrect, attempt user to try again
+        }
         int iCo=0;
         Character charBuff;
         String validFractionStr="";
-        if(full.charAt(0)=='-'){
+        if(full.startsWith("-")){
             iCo=1; //a fraction starts with '-', skip first character (we need that, it's valid)
             validFractionStr+='-';
         }else if(full.charAt(0)!='-'){
@@ -71,10 +83,21 @@ public class FractionCalculator {
             if((Character.isDigit(charBuff))||(full.charAt(i)=='/')){
                 validFractionStr+=charBuff;
             }else{
-                validFraction(true); //input is incorrect, try over again
+                validFraction(true); //input is incorrect, attempt user to try again
             }
         }
-        return validFractionStr;
+        String numeratorStr="";
+        String denominatorStr="";
+        int slashIndex = full.indexOf('/'); //get index of the slash so we could not mistakenly parse it later on
+        if(full.startsWith("-")){
+            numeratorStr = full.substring(0,slashIndex);
+            denominatorStr = full.substring((slashIndex+1),4);
+        }else {
+            numeratorStr = full.substring(0,slashIndex);
+            denominatorStr = full.substring((slashIndex+1),3);
+        }
+        int numeratorInt = Integer.parseInt(numeratorStr);
+        int denominatorInt = Integer.parseInt(denominatorStr);
     }
 
 
