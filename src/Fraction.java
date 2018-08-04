@@ -45,26 +45,26 @@ public class Fraction {
     //add the results of two equations to one another and return the result within a new object
     public Fraction add(Fraction other){
         int toNewFraction = (int)((this.toDouble())+(other.toDouble()));
-        Fraction otherFraction = new Fraction(toNewFraction);
-        return otherFraction;
+        Fraction resultedFraction = new Fraction(toNewFraction);
+        return resultedFraction;
     }
 
     public Fraction subtract(Fraction other){
         int toNewFraction = (int)((this.toDouble())-(other.toDouble()));
-        Fraction otherFraction = new Fraction(toNewFraction);
-        return otherFraction;
+        Fraction resultedFraction = new Fraction(toNewFraction);
+        return resultedFraction;
     }
 
     public Fraction multiply(Fraction other){
         int toNewFraction = (int)((this.toDouble())*(other.toDouble()));
-        Fraction otherFraction = new Fraction(toNewFraction);
-        return otherFraction;
+        Fraction resultedFraction = new Fraction(toNewFraction);
+        return resultedFraction;
     }
 
     public Fraction divide(Fraction other){
         int toNewFraction = (int)((this.toDouble())/(other.toDouble()));
-        Fraction otherFraction = new Fraction(toNewFraction);
-        return otherFraction;
+        Fraction resultedFraction = new Fraction(toNewFraction);
+        return resultedFraction;
     }
 
     public boolean equals(Fraction other){
