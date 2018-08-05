@@ -3,11 +3,16 @@ import java.util.Scanner;
 public class FractionCalculator {
     public static void main(String[] args){
         char operType = getOperation(); //get a correct sign for operation with two fractions to be calculated
+        if((operType=='q')||(operType=='q')){
+            quitingTheApp();
+        }else{
         Fraction validFractionObj1 = new Fraction();
         Fraction validFractionObj2 = new Fraction();
         validFractionObj1 = validFraction(false); //check and prompt a user to input the correct numbers for forming a fraction from that
         validFractionObj2 = validFraction(false); //check and prompt a user to input the correct numbers for forming a fraction from that
         getFraction(validFractionObj1, validFractionObj2, operType); //get the result of equation with two fraction and a sign chosen by a user
+        quitingTheApp();
+        }
     }
 
     private static char getOperation(){
@@ -18,7 +23,7 @@ public class FractionCalculator {
         /* check the character input by a user
         and check that original String input is not more than 1 character long */
         while(invalidSign(signCh)||(signStr.length()>1)){
-            System.out.println("Invalid input (\"+\", \"-\n \", \"/\", \"*\", \"=\", \"q\", or \"Q\" to quit): ");
+            System.out.println("Invalid input. Enter in a valid mathematical operation (\"+\", \"-\n \", \"/\", \"*\", \"=\", \"q\", or \"Q\" to quit): ");
             signStr = input.next();
             signCh = signStr.charAt(0);
         }
@@ -37,7 +42,7 @@ public class FractionCalculator {
         }else if(sign=='='){
             return false;
         }else if((sign=='q')||(sign=='Q')){
-            quitingTheApp(); //a user triggered quiting method for the app
+            return false;
         }
         return true;
     }
@@ -75,7 +80,7 @@ public class FractionCalculator {
             iCo=1;
         }
         char charBuff = ' ';
-        for(int i=iCo;i<=half.length();i++){ //go through the half String and make sure that it consists only with numbers
+        for(int i=iCo;i<half.length();i++){ //go through the half String and make sure that it consists only with numbers
             charBuff = half.charAt(i);
             if(!(Character.isDigit(charBuff))){
                 validFraction(true);
@@ -101,7 +106,7 @@ public class FractionCalculator {
         }else if(full.charAt(0)!='-'){
             iCo = 0; //a fraction doesn't start with '-'
         }
-        for(int i=iCo;i<=full.length();i++){
+        for(int i=iCo;i<full.length();i++){
             charBuff = full.charAt(i);
             if((Character.isDigit(charBuff))||(full.charAt(i)=='/')){
                 validFractionStr+=charBuff; //index by index we continue to make up our Fraction if it's legit
@@ -113,20 +118,22 @@ public class FractionCalculator {
         String denominatorStr="";
         int slashIndex = full.indexOf('/'); //get index of the slash so we won't mistakenly parse it later on
         numeratorStr = full.substring(0,slashIndex);
-        denominatorStr = full.substring((slashIndex+1),(full.length()-1));
+        denominatorStr = full.substring((slashIndex+1),(full.length()));
         int numeratorInt = Integer.parseInt(numeratorStr);
         int denominatorInt = Integer.parseInt(denominatorStr);
         // create a new Fraction object from our custom class
         Fraction twoValueFraction = new Fraction(numeratorInt, denominatorInt);
+        twoValueFraction.toLowestTerms();
         return twoValueFraction;
     }
 
     private static void quitingTheApp(){
-        System.out.println("The app is quit. Thank you for using!");
+        System.out.println("The app has quit. Thank you for using!");
     }
 
     public static void getFraction(Fraction validFractionObj1, Fraction validFractionObj2, char operType){
         Fraction fractionEquationResult = new Fraction();
+        boolean fractionEquality=false;
         if(operType=='+'){
             fractionEquationResult = validFractionObj1.add(validFractionObj2);
         }else if(operType=='-'){
@@ -136,12 +143,16 @@ public class FractionCalculator {
         }else if(operType=='*'){
             fractionEquationResult = validFractionObj1.multiply(validFractionObj2);
         }else if(operType=='='){
-            boolean fractionEquality = validFractionObj1.equals(validFractionObj2);
+            fractionEquality = validFractionObj1.equals(validFractionObj2);
         }
         if (operType == '=') {
-            System.out.println(validFractionObj1.toString() + " " + operType + validFractionObj2.toString() + " " + " = " + fractionEquationResult);
+            if(fractionEquality){
+                System.out.println(validFractionObj1.toString() + " equals to " + validFractionObj2.toString());
+            }else{
+                System.out.println(validFractionObj1.toString() + " doesn't equal to " + validFractionObj2.toString());
+            }
         }else{
-            System.out.println();
+            System.out.println(validFractionObj1.toString() + " " + operType + " " + validFractionObj2.toString() + " " + " = " + fractionEquationResult.toString());
         }
     }
 }

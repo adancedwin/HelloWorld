@@ -72,7 +72,7 @@ public class Fraction {
     }
 
     public void toLowestTerms(){
-        int gdc = Fraction.gcd(this.numerator, this.denominator);
+        int gdc = this.gcd(this.numerator, this.denominator);
         numerator/=gdc;
         denominator/=gdc;
     }
@@ -80,11 +80,11 @@ public class Fraction {
     public static int gcd(int num, int den){
         int aReminder=0;
         while((num!=0)&&(den!=0)){
-            aReminder = num/den;
+            aReminder = num%den;
             num = den;
             den = aReminder;
         }
-        return aReminder;
+        return num;
     }
 }
 
