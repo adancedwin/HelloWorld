@@ -1,6 +1,6 @@
 package CompanyStructure;
 
-public class TechnicalEmployee extends Employee{
+public class TechnicalEmployee extends Employee implements EmployeeInterface{
     private int checkIns;
 
     public TechnicalEmployee(String aName){

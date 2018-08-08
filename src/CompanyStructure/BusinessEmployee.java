@@ -1,6 +1,6 @@
 package CompanyStructure;
 
-public class BusinessEmployee extends Employee{
+public class BusinessEmployee extends Employee implements EmployeeInterface{
     private double bonusBudget;
     
     public BusinessEmployee(String aName){

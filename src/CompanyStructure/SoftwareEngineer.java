@@ -1,14 +1,28 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package CompanyStructure;
 
-/**
- *
- * @author adanc
- */
-public class SoftwareEngineer {
+public class SoftwareEngineer extends Employee{
+    private boolean codeAccess;
+    private int checkIns;
     
+    public SoftwareEngineer(String name){
+        super(name, 0);
+        checkIns=0;
+        codeAccess=false;
+    }
+    
+    public boolean getCodeAccess(){
+        return codeAccess;
+    }
+    
+    public void setCodeAccess(boolean access){
+        
+    }
+    
+    public int getSuccessfulCheckIns(){
+        
+    }
+    
+    public boolean checkInCode(){
+        
+    }
 }

@@ -39,6 +39,4 @@ abstract public class Employee{
         stringConv += " " + getName();
         return stringConv;
     }
-    
-    abstract String employeeStatus();
 }
