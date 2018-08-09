@@ -5,7 +5,6 @@ abstract public class Employee{
     private double baseSalary;
     private static int employeeID = 0;
     private static Employee manager;
-    private String employeeStatusVal;
     
     /*
     Should construct a new employee object and take in two parameters, one for 
@@ -65,4 +64,6 @@ abstract public class Employee{
         stringConv += " " + getName();
         return stringConv;
     }
+    
+    abstract public String employeeStatus();
 }

@@ -1,6 +1,6 @@
 package CompanyStructure;
 
-public class SoftwareEngineer extends Employee{
+public class SoftwareEngineer extends TechnicalEmployee{
     private TechnicalLead managerSW;
     private boolean codeAccess;
     private int checkIns;
@@ -9,7 +9,7 @@ public class SoftwareEngineer extends Employee{
     Should start without access to code and with 0 code check ins
     */
     public SoftwareEngineer(String name){
-        super(name, 0);
+        super(name);
         checkIns=0;
         codeAccess=false;
     }

@@ -2,7 +2,6 @@ package CompanyStructure;
 
 public class TechnicalLead extends TechnicalEmployee{
     private double baseSalary;
-    private TechnicalEmployee TechEmpl;
     private int headCount;
     private int directReports=0;
     
@@ -18,8 +17,8 @@ public class TechnicalLead extends TechnicalEmployee{
     }
     
     private double calcSalary(){
-        double abaseSalary = TechEmpl.getBaseSalary()*1.3;
-        return abaseSalary;
+        double aBaseSalary = super.getBaseSalary()*1.3;
+        return aBaseSalary;
     }
     
     /*
@@ -67,4 +66,26 @@ public class TechnicalLead extends TechnicalEmployee{
     public boolean requestBonus(Employee empl, double bonus){
         
     }
+    
+    /*
+    Should return a String that gives insight into this Manager and all their 
+    direct reports. It should return a string that is a combination of the 
+    TechnicalLead's employee status followed by each of their direct employee's 
+    status on subsequent lines. If the TechnicalLead has no reports it should 
+    print their employee status followed by the text " and no direct reports yet ". 
+    Example: "10 Kasey has 5 successful check ins and no direct reports yet". 
+    If the TechnicalLead does have reports it might look something like 
+    "10 Kasey has 5 successful check ins and is managing: /n 5 Niky has 2 successful check ins"
+    */
+    public String getTeamStatus(){
+        String result = "";
+        
+        if()
+            " and no direct reports yet "
+    }
+    
+    public String employeeStatus(){
+        
+    }
+
 }

@@ -1,14 +1,13 @@
 package CompanyStructure;
 
-public class TechnicalEmployee extends Employee implements EmployeeInterface{
+public class TechnicalEmployee extends Employee{
     private int checkIns;
-    private static double baseSalary = 75000.00;
 
     /*
     Has a default base salary of 75000    
     */
     public TechnicalEmployee(String aName){
-        super(aName, baseSalary);
+        super(aName, 75000.00);
     }
     
     /*

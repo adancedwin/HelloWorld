@@ -1,13 +1,14 @@
 package CompanyStructure;
 
-public class BusinessEmployee extends Employee implements EmployeeInterface{
-    private double bonusBudget;
+public class BusinessEmployee extends Employee{
+    private double bonusBudget;    
+    //private String employeeStatusVal;
     
     /*
     Has a default salary of 50000
     */
     public BusinessEmployee(String aName){
-        super(aName, 50000);
+        super(aName, 50000.00);
     }
     
     /*
@@ -26,6 +27,6 @@ public class BusinessEmployee extends Employee implements EmployeeInterface{
     type of Business Employee it is
     */
     public double getBonusBudget(){
-        //super.getBaseSalary();
+        //return super.getBaseSalary();
     }
 }
