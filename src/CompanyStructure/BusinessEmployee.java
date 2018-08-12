@@ -1,7 +1,7 @@
 package CompanyStructure;
 
 public class BusinessEmployee extends Employee{
-    private double bonusBudget;    
+    public double bonusBudget;
     //private String employeeStatusVal;
     
     /*
@@ -27,6 +27,6 @@ public class BusinessEmployee extends Employee{
     type of Business Employee it is
     */
     public double getBonusBudget(){
-        //return super.getBaseSalary();
+        return bonusBudget;
     }
 }

@@ -1,7 +1,6 @@
 package CompanyStructure;
 
 public class BusinessLead extends BusinessEmployee{
-    private double basesalary;
     private int reportsNumber;
     private int headCount;
     
@@ -13,7 +12,7 @@ public class BusinessLead extends BusinessEmployee{
     public BusinessLead(String name){
         super(name);
         headCount=10;
-        //basesalary=super.getBaseSalary()*2;
+        super.baseSalary=super.getBaseSalary()*2;
     }
     
     /*
@@ -34,10 +33,13 @@ public class BusinessLead extends BusinessEmployee{
     supporting should be updated to reflect the reference to the TechnicalLead 
     given. If the employee is successfully added true should be returned, false otherwise.
     */
-    public boolean addReport(Accountant e, TechnicalLead supportTeam){
+    public boolean addReport(Accountant e, TechnicalLead supportTeamMember){
         if(headCount!=0){
             reportsNumber+=1;
+            bonusBudget+=supportTeamMember.getBaseSalary()*1.1
             super.getEmployeeID();
+            return true;
+
         }
     }
     
@@ -47,7 +49,7 @@ public class BusinessLead extends BusinessEmployee{
     budget should be deducted and true should be returned. False should be returned otherwise
     */
     public boolean requestBonus(Employee e, double bonus){
-        
+        Accountant.approveBonus()
     }
     
     /*

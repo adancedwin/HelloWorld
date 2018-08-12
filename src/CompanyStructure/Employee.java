@@ -1,10 +1,10 @@
 package CompanyStructure;
 
 abstract public class Employee{
-    private String name;
-    private double baseSalary;
-    private static int employeeID = 0;
-    private static Employee manager;
+    public String name;
+    public double baseSalary;
+    public static int employeeID = 0;
+    public static Employee manager;
     
     /*
     Should construct a new employee object and take in two parameters, one for 

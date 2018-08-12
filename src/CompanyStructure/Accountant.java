@@ -1,16 +1,15 @@
 package CompanyStructure;
 
 public class Accountant extends BusinessEmployee{
-    private double basesalary;
     private int supportTeam=0;
-    private double bonusBudget;
+    private TechnicalLead supportedTeamMember;
     
     /*
     Should start with a bonus budget of 0 and no team they are officially supporting
     */    
     public Accountant(String aName){
         super(aName);
-        //bonusBudget=0;
+        super.bonusBudget=0;
         
     }
     
@@ -32,7 +31,8 @@ public class Accountant extends BusinessEmployee{
     should be 150000 + 15000 for a total of 165000
     */
     public void supportTeam(TechnicalLead lead){
-        bonusBudget=lead.getBaseSalary()+(lead.getBaseSalary()*0.1);
+        supportedTeamMember=lead;
+        super.bonusBudget=supportedTeamMember.getBaseSalary()*quantityOfSoftrwareEngineersThatReport+10%;
     }
     
     /*
@@ -42,7 +42,7 @@ public class Accountant extends BusinessEmployee{
     team false should be returned.
     */
     public boolean approveBonus(double bonus){
-        if((supportTeam!=0)&&(bonusBudget!<bonus)){
+        if((supportTeam!=0)&&(super.bonusBudget>bonus)){
             return true;
         }else{
             return false;
@@ -56,6 +56,7 @@ public class Accountant extends BusinessEmployee{
     of 22500.0 is supporting Satya Nadella"
     */
     public String employeeStatus(){
-        
+        String representation = Integer.toString(super.getEmployeeID())+ " " + super.getName()+ " with a budget of " + super.getBonusBudget() + " is supporting " + supportedTeamMember.getName();
+        return representation;
     }
 }
